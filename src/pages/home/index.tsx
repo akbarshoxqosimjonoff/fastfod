@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import type { MenuProps } from "antd";
+import "animate.css";
 import {
   Button,
   Col,
@@ -14,6 +15,9 @@ import {
 import { CgProfile } from "react-icons/cg";
 import MyCartComponent from "@src/pages/karzina";
 import Footer from "@src/pages/footer";
+import { Slide } from "react-awesome-reveal";
+import { AiOutlineUser } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -35,6 +39,7 @@ interface CartItem {
 }
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("1");
@@ -46,10 +51,22 @@ export const HomePage = () => {
 
   const items: MenuProps["items"] = useMemo(
     () => [
-      { label: "Аккаунт", key: "0" },
+      { label: "Akkaunt", key: "0", onClick: () => navigate("/account") },
+
+      {
+        label: (
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "10px" }}
+            onClick={() => navigate("/adminPage")}
+          >
+            Cтраница администратора
+          </div>
+        ),
+        key: "2",
+      },
       { label: "Настройки", key: "1" },
     ],
-    []
+    [navigate]
   );
 
   useEffect(() => {
@@ -71,7 +88,7 @@ export const HomePage = () => {
         );
         setProducts(
           response.data.filter(
-            (product: any) => product.categoryId === selectedCategory
+            (product: Product) => product.categoryId === selectedCategory
           )
         );
       } catch (error) {
@@ -83,7 +100,7 @@ export const HomePage = () => {
 
     fetchCategories();
     fetchProducts();
-  }, []);
+  }, [selectedCategory]);
 
   useEffect(() => {
     const savedCartItems = localStorage.getItem("cartItems");
@@ -92,10 +109,10 @@ export const HomePage = () => {
     }
   }, []);
 
-  const fetchProducts = async (id: string) => {
+  const fetchProductsByCategory = async (id: string) => {
     try {
       const response = await axios.get(
-        `https://175690e55d32338c.mokky.dev/products?categoryId=*${id}`
+        `https://175690e55d32338c.mokky.dev/products?categoryId=${id}`
       );
       setProducts(response.data);
     } catch (error) {
@@ -110,7 +127,7 @@ export const HomePage = () => {
 
   const showModal = (product: Product) => {
     setSelectedProduct(product);
-    setQuantity(0);
+    setQuantity(1);
     setIsModalOpen(true);
   };
 
@@ -147,19 +164,20 @@ export const HomePage = () => {
             </Dropdown>
           </div>
         </header>
-
-        <div className="flex flex-col md:flex-row items-center my-10">
-          <img src="/pic.png" alt="" className="w-full md:w-1/2 lg:w-1/3" />
-          <div className="md:ml-6">
-            <Typography.Title level={1} className="text-2xl md:text-4xl">
-              Только самые <br />
-              <span className="text-secondary">сочные бургеры!</span>
-            </Typography.Title>
-            <Typography className="text-white mt-4 md:mt-6 text-base md:text-lg">
-              Бесплатная доставка от 599₽
-            </Typography>
+        <Slide>
+          <div className="flex flex-col md:flex-row items-center my-10">
+            <img src="/pic.png" alt="" className="w-full md:w-1/2 lg:w-1/3" />
+            <div className="md:ml-6">
+              <Typography.Title level={1} className="text-2xl md:text-4xl">
+                Только самые <br />
+                <span className="text-secondary">сочные бургеры!</span>
+              </Typography.Title>
+              <Typography className="text-white mt-4 md:mt-6 text-base md:text-lg">
+                Бесплатная доставка от 599₽
+              </Typography>
+            </div>
           </div>
-        </div>
+        </Slide>
       </div>
 
       <div className="container my-10 mx-auto px-3">
@@ -207,7 +225,7 @@ export const HomePage = () => {
               value={selectedCategory}
               onChange={(value) => {
                 setSelectedCategory(value as string);
-                fetchProducts(value);
+                fetchProductsByCategory(value as string);
               }}
               block
               size="large"
@@ -279,11 +297,10 @@ export const HomePage = () => {
               setCartItems={setCartItems}
             />
           </Col>
+
           <Col lg={18}>
             {loading ? (
-              <div style={{ textAlign: "center", padding: "50px" }}>
-                <Spin size="large" />
-              </div>
+              <Spin />
             ) : (
               <Row gutter={[20, 20]}>
                 {products.map((item: Product) => (
@@ -331,3 +348,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;

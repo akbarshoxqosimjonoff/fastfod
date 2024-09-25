@@ -27,7 +27,7 @@ export default function Register() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: values.userName,
+          username: values.userName,  // Foydalanuvchi nomi
           password: values.password
         }),
       });

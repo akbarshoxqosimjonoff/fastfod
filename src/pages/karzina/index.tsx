@@ -113,7 +113,7 @@ const MyCartComponent = ({ cartItems, setCartItems }: MyCartComponentProps) => {
       </div>
       <div className="flex justify-center pt-4">
         <Button
-          className="bg-orange-600 text-white rounded-lg py-2 px-4 text-lg"
+          className="bg-orange-600 text-white rounded-lg py-2 px-4 text-lg w-full"
           onClick={showOrderModal}
         >
           Оформить заказ

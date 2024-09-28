@@ -279,7 +279,11 @@ export const HomePage = () => {
                   <div
                     key={product.id}
                     className="bg-white rounded-lg shadow-lg overflow-hidden"
+<<<<<<< HEAD
                     onClick={() => showModal(product)}
+=======
+                    // onClick={() => showModal(product)}
+>>>>>>> b46430b (dd)
                   >
                     <img
                       src={product.image}
@@ -288,12 +292,24 @@ export const HomePage = () => {
                     />
                     <div className="p-4">
                       <Typography className="font-bold text-lg">
+<<<<<<< HEAD
                         {product.title}
                       </Typography>
                       <Typography className="text-gray-500">
                         {product.price}₽
                       </Typography>
                       <div className="" style={{paddingTop:"20px"}}>
+=======
+                        {product.price}₽
+                      </Typography>
+                      <Typography className="text-black-800" style={{fontWeight:"400", paddingTop:"5px"}}>
+                        {product.title}
+                      </Typography>
+                      <Typography style={{color:"#B1B1B1", paddingTop:"20px"}} >
+                        {product.weight}г
+                      </Typography>
+                      <div className="" style={{ paddingTop: "20px",fontWeight:"900" }}>
+>>>>>>> b46430b (dd)
                         <Button
                           className="bg-orange-500 text-white w-full md:w-64"
                           onClick={() => {

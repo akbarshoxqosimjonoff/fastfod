@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import App from './App'
 
@@ -7,3 +8,15 @@ describe('<App />', () => {
     cy.mount(<App />)
   })
 })
+=======
+import { defineConfig } from 'cypress'
+
+export default defineConfig({
+  component: {
+    devServer: {
+      framework: 'react',
+      bundler: 'webpack',
+    },
+  },
+})
+>>>>>>> b46430b (dd)

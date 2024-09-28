@@ -19,11 +19,22 @@ export default function Login() {
           password: values.password,
         }
       );
+<<<<<<< HEAD
+=======
+
+      // Tokenni saqlash
+      localStorage.setItem("token", response.data.token);
+>>>>>>> b46430b (dd)
       console.log("Success:", response.data);
 
       navigate("/dashboard");
     } catch (error) {
+<<<<<<< HEAD
       console.error("Login xatosi:", error);
+=======
+      console.error("Login error:", error);
+      alert("Login failed. Please check your credentials.");
+>>>>>>> b46430b (dd)
     }
   };
 
@@ -42,6 +53,7 @@ export default function Login() {
         justifyContent: "center",
       }}
     >
+<<<<<<< HEAD
       <div
         className={
           "relative p-10 min-[300px]:w-[350px] sm:w-[450px] h-[400px] rounded-2xl bg-opacity-80"
@@ -53,6 +65,10 @@ export default function Login() {
             zIndex: -10,
           }}
         />
+=======
+      <div className="relative p-10 min-[300px]:w-[350px] sm:w-[450px] h-[400px] rounded-2xl bg-opacity-80">
+        <div className="absolute inset-0 bg-opacity-50 rounded-2xl" style={{ zIndex: -10 }} />
+>>>>>>> b46430b (dd)
         <p className={"text-4xl text-center font-medium mb-5 z-10"}>Login</p>
         <Form
           name="basic"
@@ -88,8 +104,13 @@ export default function Login() {
           </Form.Item>
         </Form>
         <p className={"text-center"}>
+<<<<<<< HEAD
           You do not have account{" "}
           <Link to={"/reg"} className={"text-white ml-1"}>
+=======
+          You do not have an account?{" "}
+          <Link to={"/register"} className={"text-white ml-1"}>
+>>>>>>> b46430b (dd)
             Sign in
           </Link>
         </p>

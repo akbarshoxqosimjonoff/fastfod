@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-import React from 'react'
 
-function Buyurtma() {
-  return (
-    <div>
-      <h1>hello</h1>
-    </div>
-  )
-}
-
-export default Buyurtma
-=======
 import React from "react";
 import { Card, Col, Row, Tag, Badge } from "antd";
 
@@ -124,4 +112,3 @@ const Buyurtma: React.FC = () => {
 };
 
 export default Buyurtma;
->>>>>>> b46430b (dd)

@@ -13,10 +13,10 @@ import {
   Modal,
 } from "antd";
 import { CgProfile } from "react-icons/cg";
+import { FiMessageCircle } from "react-icons/fi";
 import MyCartComponent from "@src/pages/karzina";
 import Footer from "@src/pages/footer";
 import { Slide } from "react-awesome-reveal";
-import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 interface Product {
@@ -48,11 +48,11 @@ export const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isChatModalOpen, setIsChatModalOpen] = useState<boolean>(false);
 
   const items: MenuProps["items"] = useMemo(
     () => [
       { label: "Akkaunt", key: "0", onClick: () => navigate("/account") },
-
       {
         label: (
           <div
@@ -143,21 +143,43 @@ export const HomePage = () => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  const handleChatOpen = () => {
+    setIsChatModalOpen(true);
+  };
+
+  const handleChatOk = () => {
+    setIsChatModalOpen(false);
+    navigate("/chat");
+  };
+
   return (
     <div className="bg-[#F9F9F9]">
       <div className="bg-[url('/ellipse.svg')] bg-cover bg-center flex flex-col items-center py-7">
         <header className="container flex justify-between items-center">
-          <img src={"/logo.svg"} alt="" />
-          <Dropdown menu={{ items }} trigger={["click"]}>
-            <Button type="text">
-              <CgProfile />
+          <img src={"/logo.svg"} alt="Logo" />
+          <div className="flex items-center">
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <Button type="text">
+                <CgProfile  style={{fontSize:"23px"}}/>
+              </Button>
+            </Dropdown>
+            <Button
+              type="text"
+              onClick={handleChatOpen}
+              className="flex items-center text-2xl"
+            >
+              <FiMessageCircle   style={{fontSize:"23px"}}/>
             </Button>
-          </Dropdown>
+          </div>
         </header>
 
         <Slide>
           <div className="flex flex-col md:flex-row items-center my-10">
-            <img src="/pic.png" alt="" className="w-full md:w-1/2 lg:w-1/3" />
+            <img
+              src="/pic.png"
+              alt="Burger"
+              className="w-full md:w-1/2 lg:w-1/3"
+            />
             <div className="md:ml-6 text-center md:text-left">
               <Typography.Title level={1} className="text-2xl md:text-4xl">
                 Только самые <br />
@@ -201,65 +223,6 @@ export const HomePage = () => {
             />
           </div>
 
-          <Modal
-            title={selectedProduct?.title}
-            open={isModalOpen}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={null}
-          >
-            <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-              <img
-                src={selectedProduct?.image || "/photo.svg"}
-                alt={selectedProduct?.title}
-                className="w-full md:w-40 h-auto"
-              />
-              <div>
-                <Typography className="text-xs mb-4">
-                  {selectedProduct?.desc}
-                </Typography>
-                <Typography className="text-xs font-semibold mb-2">
-                  Состав:
-                </Typography>
-                <Typography className="text-sm">
-                  {selectedProduct?.compound.join(", ")}
-                </Typography>
-              </div>
-            </div>
-
-            <div className="pt-6 flex flex-col md:flex-row items-center gap-4">
-              <Button
-                className="bg-orange-500 text-white w-full md:w-64"
-                onClick={() => {
-                  if (selectedProduct && quantity > 0) {
-                    setCartItems((prevItems) => [
-                      ...prevItems,
-                      {
-                        id: selectedProduct.id,
-                        name: selectedProduct.title,
-                        price: selectedProduct.price,
-                        quantity,
-                      },
-                    ]);
-                    handleOk();
-                  }
-                }}
-              >
-                Добавить
-              </Button>
-
-              <div className="flex items-center bg-gray-200 px-4 py-1 rounded">
-                <button onClick={handleDecrement} className="text-black">
-                  -
-                </button>
-                <span className="mx-5 text-xl">{quantity}</span>
-                <button onClick={handleIncrement} className="text-black">
-                  +
-                </button>
-              </div>
-            </div>
-          </Modal>
-
           <Col lg={6}>
             <MyCartComponent
               cartItems={cartItems}
@@ -279,11 +242,7 @@ export const HomePage = () => {
                   <div
                     key={product.id}
                     className="bg-white rounded-lg shadow-lg overflow-hidden"
-<<<<<<< HEAD
                     onClick={() => showModal(product)}
-=======
-                    // onClick={() => showModal(product)}
->>>>>>> b46430b (dd)
                   >
                     <img
                       src={product.image}
@@ -292,43 +251,30 @@ export const HomePage = () => {
                     />
                     <div className="p-4">
                       <Typography className="font-bold text-lg">
-<<<<<<< HEAD
-                        {product.title}
-                      </Typography>
-                      <Typography className="text-gray-500">
                         {product.price}₽
                       </Typography>
-                      <div className="" style={{paddingTop:"20px"}}>
-=======
-                        {product.price}₽
-                      </Typography>
-                      <Typography className="text-black-800" style={{fontWeight:"400", paddingTop:"5px"}}>
-                        {product.title}
-                      </Typography>
-                      <Typography style={{color:"#B1B1B1", paddingTop:"20px"}} >
-                        {product.weight}г
-                      </Typography>
-                      <div className="" style={{ paddingTop: "20px",fontWeight:"900" }}>
->>>>>>> b46430b (dd)
-                        <Button
-                          className="bg-orange-500 text-white w-full md:w-64"
-                          onClick={() => {
-                            if (selectedProduct && quantity > 0) {
-                              setCartItems((prevItems) => [
-                                ...prevItems,
-                                {
-                                  id: selectedProduct.id,
-                                  name: selectedProduct.title,
-                                  price: selectedProduct.price,
-                                  quantity,
-                                },
-                              ]);
-                              handleOk();
-                            }
-                          }}
-                        >
-                          Добавить
-                        </Button>
+                      <div style={{ paddingTop: "10px" }}>
+                        <Typography>{product.title}</Typography>
+
+                        <Typography style={{ color: "#B1B1B1" }}>
+                          {product.weight}г
+                        </Typography>
+                        <div style={{ paddingTop: "20px", fontWeight: "900" }}>
+                          <Button
+                            className="bg-orange-500 text-white w-full md:w-64"
+                            onClick={() => {
+                              const cartItem: CartItem = {
+                                id: product.id,
+                                name: product.title,
+                                price: product.price,
+                                quantity,
+                              };
+                              setCartItems((prev) => [...prev, cartItem]);
+                            }}
+                          >
+                            В корзину
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -338,10 +284,75 @@ export const HomePage = () => {
           </Col>
         </Row>
       </div>
+      <Modal
+        title={selectedProduct?.title}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+          <img
+            src={selectedProduct?.image || "/photo.svg"}
+            alt={selectedProduct?.title}
+            className="w-full md:w-40 h-auto"
+          />
+          <div>
+            <Typography className="text-xs mb-4">
+              {selectedProduct?.desc}
+            </Typography>
+            <Typography className="text-xs font-semibold mb-2">
+              Состав:
+            </Typography>
+            <Typography className="text-sm">
+              {selectedProduct?.compound.join(", ")}
+            </Typography>
+          </div>
+        </div>
+
+        <div className="pt-6 flex flex-col md:flex-row items-center gap-4">
+          <Button
+            className="bg-orange-500 text-white w-full md:w-64"
+            onClick={() => {
+              if (selectedProduct && quantity > 0) {
+                setCartItems((prevItems) => [
+                  ...prevItems,
+                  {
+                    id: selectedProduct.id,
+                    name: selectedProduct.title,
+                    price: selectedProduct.price,
+                    quantity,
+                  },
+                ]);
+                handleOk();
+              }
+            }}
+          >
+            Добавить
+          </Button>
+
+          <div className="flex items-center bg-gray-200 px-4 py-1 rounded">
+            <button onClick={handleDecrement} className="text-black">
+              -
+            </button>
+            <span className="mx-5 text-xl">{quantity}</span>
+            <button onClick={handleIncrement} className="text-black">
+              +
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        title="Salom! Chatga ulanishga tayyormisiz?"
+        visible={isChatModalOpen}
+        onOk={handleChatOk}
+        onCancel={() => setIsChatModalOpen(false)}
+      >
+        <p>Biz bilan suhbatlasha boshlash uchun "OK" tugmasini bosing.</p>
+      </Modal>
 
       <Footer />
     </div>
   );
 };
-
-export default HomePage;

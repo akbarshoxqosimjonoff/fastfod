@@ -1,7 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import type { MenuProps } from "antd";
+<<<<<<< HEAD
 import "animate.css";
+=======
+>>>>>>> ab66aac (fastfods)
 import {
   Button,
   Col,
@@ -15,9 +18,12 @@ import {
 import { CgProfile } from "react-icons/cg";
 import MyCartComponent from "@src/pages/karzina";
 import Footer from "@src/pages/footer";
+<<<<<<< HEAD
 import { Slide } from "react-awesome-reveal";
 import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+=======
+>>>>>>> ab66aac (fastfods)
 
 interface Product {
   id: string;
@@ -39,7 +45,10 @@ interface CartItem {
 }
 
 export const HomePage = () => {
+<<<<<<< HEAD
   const navigate = useNavigate();
+=======
+>>>>>>> ab66aac (fastfods)
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("1");
@@ -51,6 +60,7 @@ export const HomePage = () => {
 
   const items: MenuProps["items"] = useMemo(
     () => [
+<<<<<<< HEAD
       { label: "Akkaunt", key: "0", onClick: () => navigate("/account") },
 
       {
@@ -67,6 +77,12 @@ export const HomePage = () => {
       { label: "Настройки", key: "1" },
     ],
     [navigate]
+=======
+      { label: "Аккаунт", key: "0" },
+      { label: "Настройки", key: "1" },
+    ],
+    []
+>>>>>>> ab66aac (fastfods)
   );
 
   useEffect(() => {
@@ -88,7 +104,11 @@ export const HomePage = () => {
         );
         setProducts(
           response.data.filter(
+<<<<<<< HEAD
             (product: Product) => product.categoryId === selectedCategory
+=======
+            (product: any) => product.categoryId === selectedCategory
+>>>>>>> ab66aac (fastfods)
           )
         );
       } catch (error) {
@@ -100,7 +120,11 @@ export const HomePage = () => {
 
     fetchCategories();
     fetchProducts();
+<<<<<<< HEAD
   }, [selectedCategory]);
+=======
+  }, []);
+>>>>>>> ab66aac (fastfods)
 
   useEffect(() => {
     const savedCartItems = localStorage.getItem("cartItems");
@@ -109,10 +133,17 @@ export const HomePage = () => {
     }
   }, []);
 
+<<<<<<< HEAD
   const fetchProductsByCategory = async (id: string) => {
     try {
       const response = await axios.get(
         `https://175690e55d32338c.mokky.dev/products?categoryId=${id}`
+=======
+  const fetchProducts = async (id: string) => {
+    try {
+      const response = await axios.get(
+        `https://175690e55d32338c.mokky.dev/products?categoryId=*${id}`
+>>>>>>> ab66aac (fastfods)
       );
       setProducts(response.data);
     } catch (error) {
@@ -127,7 +158,11 @@ export const HomePage = () => {
 
   const showModal = (product: Product) => {
     setSelectedProduct(product);
+<<<<<<< HEAD
     setQuantity(1);
+=======
+    setQuantity(0);
+>>>>>>> ab66aac (fastfods)
     setIsModalOpen(true);
   };
 
@@ -144,6 +179,7 @@ export const HomePage = () => {
   }, [cartItems]);
 
   return (
+<<<<<<< HEAD
     <div className="bg-[#F9F9F9]">
       <div className="bg-[url('/ellipse.svg')] bg-cover bg-center flex flex-col items-center py-7">
         <header className="container flex justify-between items-center">
@@ -169,21 +205,91 @@ export const HomePage = () => {
             </div>
           </div>
         </Slide>
+=======
+    <div style={{ backgroundColor: "#F9F9F9" }}>
+      <div
+        style={{
+          background: "url('/ellipse.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "top center",
+          backgroundColor: "#F9F9F9",
+        }}
+        className="flex flex-col items-center py-7"
+      >
+        <header className="container flex justify-between">
+          <img src={"/logo.svg"} alt="" />
+          <div>
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <Button type="text">
+                <CgProfile />
+              </Button>
+            </Dropdown>
+          </div>
+        </header>
+
+        <div className="flex flex-col md:flex-row items-center my-10">
+          <img src="/pic.png" alt="" className="w-full md:w-1/2 lg:w-1/3" />
+          <div className="md:ml-6">
+            <Typography.Title level={1} className="text-2xl md:text-4xl">
+              Только самые <br />
+              <span className="text-secondary">сочные бургеры!</span>
+            </Typography.Title>
+            <Typography className="text-white mt-4 md:mt-6 text-base md:text-lg">
+              Бесплатная доставка от 599₽
+            </Typography>
+          </div>
+        </div>
+>>>>>>> ab66aac (fastfods)
       </div>
 
       <div className="container my-10 mx-auto px-3">
         <Row gutter={[20, 20]}>
+<<<<<<< HEAD
           <div className="flex gap-5 overflow-x-auto whitespace-nowrap py-2 px-4">
             <Segmented
               className="rounded-lg gap-5 text-black inline-block"
               options={categories.map((category) => ({
                 label: (
                   <div className="flex items-center gap-3 py-2 px-3 text-lg">
+=======
+          <div
+            style={{
+              overflowX: "auto",
+              whiteSpace: "nowrap",
+              padding: "0 10px",
+              margin: "0 30px",
+              display: "flex",
+              gap: "20px",
+            }}
+          >
+            <Segmented
+              style={{
+                borderRadius: "12px",
+                gap: "20px",
+                color: "#000000",
+                display: "inline-block",
+              }}
+              options={categories.map((category) => ({
+                label: (
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      alignItems: "center",
+                      padding: "9px 8px",
+                      fontSize: "18px",
+                    }}
+                  >
+>>>>>>> ab66aac (fastfods)
                     {category.icon ? (
                       <img
                         src={category.icon}
                         alt={category.title}
+<<<<<<< HEAD
                         className="w-6 h-6"
+=======
+                        style={{ width: "24px", height: "24px" }}
+>>>>>>> ab66aac (fastfods)
                       />
                     ) : null}
                     <span>{category.title}</span>
@@ -194,7 +300,11 @@ export const HomePage = () => {
               value={selectedCategory}
               onChange={(value) => {
                 setSelectedCategory(value as string);
+<<<<<<< HEAD
                 fetchProductsByCategory(value as string);
+=======
+                fetchProducts(value);
+>>>>>>> ab66aac (fastfods)
               }}
               block
               size="large"
@@ -248,7 +358,11 @@ export const HomePage = () => {
                 Добавить
               </Button>
 
+<<<<<<< HEAD
               <div className="flex items-center bg-gray-200 px-4 py-1 rounded">
+=======
+              <div className="flex items-center bg-gray-100 px-4 py-2 rounded">
+>>>>>>> ab66aac (fastfods)
                 <button onClick={handleDecrement} className="text-black">
                   -
                 </button>
@@ -266,6 +380,7 @@ export const HomePage = () => {
               setCartItems={setCartItems}
             />
           </Col>
+<<<<<<< HEAD
 
           <Col lg={18}>
             {loading ? (
@@ -312,23 +427,70 @@ export const HomePage = () => {
                               ]);
                               handleOk();
                             }
+=======
+          <Col lg={18}>
+            {loading ? (
+              <div style={{ textAlign: "center", padding: "50px" }}>
+                <Spin size="large" />
+              </div>
+            ) : (
+              <Row gutter={[20, 20]}>
+                {products.map((item: Product) => (
+                  <Col xs={24} sm={12} md={8} lg={8} xl={8} key={item.id}>
+                    <div className="bg-white rounded-lg p-3">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full rounded"
+                      />
+                      <Typography className="text-black mt-4 text-xl font-semibold">
+                        {item.price}₽
+                      </Typography>
+                      <Typography className="text-black text-base font-normal">
+                        {item.title}
+                      </Typography>
+                      <Typography className="text-black mt-2 text-sm font-semibold text-gray-500">
+                        {item.weight}гр
+                      </Typography>
+                      <div
+                        className="pb-4 text-center"
+                        style={{ paddingTop: "10px" }}
+                      >
+                        <Button
+                          onClick={() => showModal(item)}
+                          type="primary"
+                          style={{
+                            width: "100%",
+                            background: "#FF7020",
+                            border: "none",
+>>>>>>> ab66aac (fastfods)
                           }}
                         >
                           Добавить
                         </Button>
                       </div>
                     </div>
+<<<<<<< HEAD
                   </div>
+=======
+                  </Col>
+>>>>>>> ab66aac (fastfods)
                 ))}
               </Row>
             )}
           </Col>
         </Row>
       </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ab66aac (fastfods)
       <Footer />
     </div>
   );
 };
+<<<<<<< HEAD
 
 export default HomePage;
+=======
+>>>>>>> ab66aac (fastfods)

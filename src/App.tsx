@@ -3,11 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/home";
 import Login from "@src/pages/login";
 import Register from "@src/pages/login/reg";
+<<<<<<< HEAD
 import AdminPage from "@src/pages/admin";
 import Account from "@src/pages/admin/account";
 import DashboardPage from "@src/pages/admin/dashboard";
 import Chat from "@src/pages/admin/chat";
 
+=======
+>>>>>>> ab66aac (fastfods)
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
         }}
       >
         <Routes>
+<<<<<<< HEAD
           <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -27,6 +31,11 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/chat" element={<Chat />} />
+=======
+        <Route path="/home" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/reg" element={<Register />} />
+>>>>>>> ab66aac (fastfods)
         </Routes>
       </ConfigProvider>
     </BrowserRouter>

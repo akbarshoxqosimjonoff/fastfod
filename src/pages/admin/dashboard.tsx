@@ -1,4 +1,3 @@
-import React from "react";
 import { BsShop } from "react-icons/bs";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { FaUsers } from "react-icons/fa";

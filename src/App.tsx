@@ -1,5 +1,5 @@
 import { ConfigProvider } from "antd";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HomePage } from "./pages/home";
 import Login from "@src/pages/login";
 import Register from "@src/pages/login/reg";
@@ -20,14 +20,13 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<Navigate to={'/home'}/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/account" element={<Account />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/chat" element={<Chat />} />
-
           <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reg" element={<Register />} />

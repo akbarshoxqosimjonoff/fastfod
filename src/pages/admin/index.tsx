@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f679e8f
 import React, { useState } from "react";
 import {
   DesktopOutlined,
@@ -149,3 +153,19 @@ const AdminPage: React.FC = () => {
 };
 
 export default AdminPage;
+<<<<<<< HEAD
+=======
+=======
+import React from 'react'
+
+function Admin() {
+  return (
+    <div>
+
+    </div>
+  )
+}
+
+export default Admin
+>>>>>>> ab66aac (fastfods)
+>>>>>>> f679e8f

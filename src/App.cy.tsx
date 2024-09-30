@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react'
 import App from './App'
 
@@ -9,6 +10,8 @@ describe('<App />', () => {
   })
 })
 =======
+=======
+>>>>>>> f679e8f
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
@@ -19,4 +22,7 @@ export default defineConfig({
     },
   },
 })
+<<<<<<< HEAD
 >>>>>>> b46430b (dd)
+=======
+>>>>>>> f679e8f

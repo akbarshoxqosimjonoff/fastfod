@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> f679e8f
 import React from "react";
 import { Card, Col, Row, Tag, Badge } from "antd";
 

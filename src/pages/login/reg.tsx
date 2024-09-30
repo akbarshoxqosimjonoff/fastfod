@@ -13,20 +13,11 @@ export default function Register() {
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     if (values.password !== values.confirmPassword) {
-<<<<<<< HEAD
-      alert("Parollar mos kelmaydi!");
-=======
-<<<<<<< HEAD
-      alert("Parollar mos kelmaydi!");
-=======
-      alert("Passwords do not match!");
->>>>>>> ab66aac (fastfods)
->>>>>>> f679e8f
+      alert("Parollar mos kelmaydi!"); // "Passwords do not match!"
       return;
     }
 
     try {
-<<<<<<< HEAD
       const response = await axios.post("https://175690e55d32338c.mokky.dev/register", {
         username: values.userName,
         password: values.password,
@@ -37,67 +28,22 @@ export default function Register() {
         navigate("/home");
       }
     } catch (error: any) {
-      console.error("Registratsiya xatosi:", error);
+      console.error("Registratsiya xatosi:", error); // "Registration error:"
       if (error.response) {
         const { status, data } = error.response;
-=======
-<<<<<<< HEAD
-      const response = await axios.post(
-        "https://175690e55d32338c.mokky.dev/register",
-        {
-          username: values.userName,
-          password: values.password,
-        }
-      );
-
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-      }
-
-      navigate("/home");
-    } catch (error: any) {
-      console.error("Registratsiya xatosi:", error);
-
-      if (error.response) {
-        const { status, data } = error.response;
-        console.log("Xato ma'lumotlari:", data); // Qo'shimcha ma'lumotlarni konsolga chiqarish
-
->>>>>>> f679e8f
+        console.log("Xato ma'lumotlari:", data); // "Error details:"
         if (status === 401) {
           if (data.message === "RESOURCE_USER_ALREADY_EXISTS") {
-            alert("Bu foydalanuvchi nomi allaqachon mavjud. Iltimos, boshqa foydalanuvchi nomini tanlang.");
+            alert("Bu foydalanuvchi nomi allaqachon mavjud. Iltimos, boshqa foydalanuvchi nomini tanlang."); // "This username already exists. Please choose another username."
           } else {
-            alert("Ruxsat berilmagan: Iltimos, kiritishingizni tekshiring.");
+            alert("Ruxsat berilmagan: Iltimos, kiritishingizni tekshiring."); // "Unauthorized: Please check your input."
           }
         } else {
-          alert("Registratsiya amalga oshmadi. Iltimos, qaytadan urinib ko'ring.");
+          alert("Registratsiya amalga oshmadi. Iltimos, qaytadan urinib ko'ring."); // "Registration failed. Please try again."
         }
       } else {
-        alert("Kutilmagan xato yuz berdi. Iltimos, qaytadan urinib ko'ring.");
+        alert("Kutilmagan xato yuz berdi. Iltimos, qaytadan urinib ko'ring."); // "An unexpected error occurred. Please try again."
       }
-<<<<<<< HEAD
-=======
-=======
-      console.log(values);
-
-      const res = await fetch("https://175690e55d32338c.mokky.dev/register", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: values.userName,
-          password: values.password
-        }),
-      });
-
-      navigate("/home");
-    } catch (error) {
-      console.error("Registration error:", error);
-      alert("Registration failed. Please try again.");
->>>>>>> ab66aac (fastfods)
->>>>>>> f679e8f
     }
   };
 
@@ -116,29 +62,9 @@ export default function Register() {
         justifyContent: "center",
       }}
     >
-<<<<<<< HEAD
       <div className="relative p-10 min-[300px]:w-[350px] sm:w-[450px] h-[500px] rounded-2xl bg-opacity-80">
         <div className="absolute inset-0 bg-opacity-50 rounded-2xl" style={{ zIndex: -10 }} />
         <p className="text-4xl text-center font-medium mb-5 z-10">Register</p>
-=======
-<<<<<<< HEAD
-      <div className="relative p-10 min-[300px]:w-[350px] sm:w-[450px] h-[500px] rounded-2xl bg-opacity-80">
-        <div className="absolute inset-0 bg-opacity-50 rounded-2xl" style={{ zIndex: -10 }} />
-=======
-      <div
-        className={
-          "relative p-10 min-[300px]:w-[350px] sm:w-[450px] h-[500px] rounded-2xl bg-opacity-80"
-        }
-      >
-        <div
-          className="absolute inset-0 bg-opacity-50 rounded-2xl"
-          style={{
-            zIndex: -10,
-          }}
-        />
->>>>>>> ab66aac (fastfods)
-        <p className={"text-4xl text-center font-medium mb-5 z-10"}>Register</p>
->>>>>>> f679e8f
         <Form
           name="basic"
           layout="vertical"
@@ -149,90 +75,41 @@ export default function Register() {
           <Form.Item<FieldType>
             label={<span style={{ color: "white" }}>Username</span>}
             name="userName"
-<<<<<<< HEAD
-            rules={[{ required: true, message: "Iltimos, foydalanuvchi nomini kiriting!" }]}
+            rules={[{ required: true, message: "Iltimos, foydalanuvchi nomini kiriting!" }]} // "Please enter your username!"
           >
             <Input className="h-[40px]" />
-=======
-<<<<<<< HEAD
-            rules={[{ required: true, message: "Iltimos, foydalanuvchi nomini kiriting!" }]}
-=======
-            rules={[{ required: true, message: "Please enter your username!" }]}
->>>>>>> ab66aac (fastfods)
-          >
-            <Input className={"h-[40px]"} />
->>>>>>> f679e8f
           </Form.Item>
 
           <Form.Item<FieldType>
             label={<span style={{ color: "white" }}>Password</span>}
             name="password"
-<<<<<<< HEAD
-            rules={[{ required: true, message: "Iltimos, parolni kiriting!" }]}
+            rules={[{ required: true, message: "Iltimos, parolni kiriting!" }]} // "Please enter your password!"
           >
             <Input.Password className="h-[40px]" />
-=======
-<<<<<<< HEAD
-            rules={[{ required: true, message: "Iltimos, parolni kiriting!" }]}
-=======
-            rules={[{ required: true, message: "Please enter your password!" }]}
->>>>>>> ab66aac (fastfods)
-          >
-            <Input.Password className={"h-[40px]"} />
->>>>>>> f679e8f
           </Form.Item>
 
           <Form.Item<FieldType>
             label={<span style={{ color: "white" }}>Confirm Password</span>}
             name="confirmPassword"
-<<<<<<< HEAD
-            rules={[{ required: true, message: "Iltimos, parolni tasdiqlang!" }]}
+            rules={[{ required: true, message: "Iltimos, parolni tasdiqlang!" }]} // "Please confirm your password!"
           >
             <Input.Password className="h-[40px]" />
-=======
-<<<<<<< HEAD
-            rules={[{ required: true, message: "Iltimos, parolni tasdiqlang!" }]}
-=======
-            rules={[
-              { required: true, message: "Please confirm your password!" },
-            ]}
->>>>>>> ab66aac (fastfods)
-          >
-            <Input.Password className={"h-[40px]"} />
->>>>>>> f679e8f
           </Form.Item>
 
           <Form.Item>
             <Button
               type="primary"
               htmlType="submit"
-<<<<<<< HEAD
               className="w-[100%] h-[40px] text-[16px]"
-=======
-              className={"w-[100%] h-[40px] text-[16px]"}
->>>>>>> f679e8f
             >
               Register
             </Button>
           </Form.Item>
         </Form>
-<<<<<<< HEAD
         <p className="text-center">
           Allaqachon akkauntingiz bormi?{" "}
           <Link to="/login" className="text-white ml-1">
             Kirish
-=======
-        <p className={"text-center"}>
-<<<<<<< HEAD
-          Allaqachon akkauntingiz bormi?{" "}
-          <Link to={"/login"} className={"text-white ml-1"}>
-            Kirish
-=======
-          Already have an account?{" "}
-          <Link to={"/login"} className={"text-white ml-1"}>
-            Log in
->>>>>>> ab66aac (fastfods)
->>>>>>> f679e8f
           </Link>
         </p>
       </div>
